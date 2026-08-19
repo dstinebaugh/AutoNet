@@ -46,7 +46,7 @@ and ensure they are owned by the `asterisk` user:
 | File example              | Purpose                          |
 |---------------------------|----------------------------------|
 | herzog-10m.ul             | 10-minute warning                |
-| herzog-5m-reconnect.ul    | 5-minute warning                 |
+| herzog-5m.ul    | 5-minute warning                 |
 | herzog-now.ul             | Pre-net announcement             |
 | herzog-enabled.ul         | Confirmation when enabling       |
 | herzog-disabled.ul        | Confirmation when disabling      |
