@@ -1,0 +1,9 @@
+# AutoNet – Optional spoke rejoin after the net
+# Install with: sudo crontab -e  (on the spoke node)
+#
+# Replace SPOKENODE with the spoke node number
+# Replace HUBNODE with the hub node number
+# Adjust the time as needed
+
+# Reconnect to hub in transceive mode
+1 0 * * * /usr/sbin/asterisk -rx "rpt fun SPOKENODE *3HUBNODE"

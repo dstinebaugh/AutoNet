@@ -1,0 +1,6 @@
+# Add these to ~/.bashrc on the hub for quick enable/disable
+
+alias autonet-on='sudo -u asterisk touch /etc/asterisk/custom/autonet.enabled && echo "AutoNet ENABLED"'
+alias autonet-off='sudo -u asterisk rm -f /etc/asterisk/custom/autonet.enabled && echo "AutoNet DISABLED"'
+
+# After adding, run: source ~/.bashrc

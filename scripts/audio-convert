@@ -1,0 +1,26 @@
+#!/bin/bash
+# audio-convert — simple MP3 → AllStar .ul converter
+# Usage: audio-convert input.mp3 output.ul
+# Requires: sox
+
+if [ $# -ne 2 ]; then
+    echo "Usage: audio-convert <input.mp3> <output.ul>"
+    exit 1
+fi
+
+INPUT="$1"
+OUTPUT="$2"
+
+if [ ! -f "$INPUT" ]; then
+    echo "Error: input file not found: $INPUT"
+    exit 1
+fi
+
+if ! command -v sox >/dev/null 2>&1; then
+    echo "Error: sox is not installed"
+    exit 1
+fi
+
+echo "Converting $INPUT → $OUTPUT ..."
+sox "$INPUT" -r 8000 -c 1 -t ul "$OUTPUT"
+echo "Done."

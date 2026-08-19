@@ -1,0 +1,19 @@
+# AutoNet – Scheduled net automation (Hub)
+# Install with: sudo crontab -e
+# Only runs when /etc/asterisk/custom/autonet.enabled exists
+#
+# Replace YOURNODE with your hub node number
+# Replace NETNODE with the target net node number
+# Adjust times to your local timezone and net schedule
+
+# 10-minute warning
+50 22 * * * [ -f /etc/asterisk/custom/autonet.enabled ] && /usr/sbin/asterisk -rx "rpt fun YOURNODE *901"
+
+# 5-minute warning
+55 22 * * * [ -f /etc/asterisk/custom/autonet.enabled ] && /usr/sbin/asterisk -rx "rpt fun YOURNODE *902"
+
+# Join sequence: play "now" announcement → disconnect all → connect to net
+0 23 * * * [ -f /etc/asterisk/custom/autonet.enabled ] && /usr/sbin/asterisk -rx "rpt fun YOURNODE *903" && sleep 15 && /usr/sbin/asterisk -rx "rpt fun YOURNODE *806" && sleep 2 && /usr/sbin/asterisk -rx "rpt fun YOURNODE *3NETNODE"
+
+# Leave net and restore previously connected links
+0 0 * * * [ -f /etc/asterisk/custom/autonet.enabled ] && /usr/sbin/asterisk -rx "rpt fun YOURNODE *1NETNODE" && sleep 2 && /usr/sbin/asterisk -rx "rpt fun YOURNODE *816"
