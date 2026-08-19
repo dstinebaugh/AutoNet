@@ -1,4 +1,4 @@
-# AutoNet - Scheduled Net Automation for ASL3
+# AutoNet - Scheduled Net Automation for AllStarLink3
 
 A clean, production-oriented method for automatically connecting an AllStarLink 3 hub to a scheduled net (example: Nightcrawlers on 458800), complete with pre-net announcements, link management, and easy enable/disable control.
 
